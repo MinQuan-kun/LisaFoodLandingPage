@@ -1,0 +1,96 @@
+/* React Bits Signature Floating Navbar */
+.ln-navbar {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ln-navbar-inner {
+  width: 100%;
+  max-width: 1440px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 0 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(249, 115, 22, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              height 0.3s ease;
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Scrolled state: shrinks and gets deeper blur & orange glow shadow */
+.ln-navbar.ln-navbar-scrolled .ln-navbar-inner {
+  max-width: 1140px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border-color: rgba(249, 115, 22, 0.28);
+  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.14),
+              0 2px 6px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Nav links container with sliding highlight (Chỉ hiển thị trên màn hình Desktop >= 1024px) */
+.ln-navbar-links {
+  position: relative;
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (min-width: 1024px) {
+  .ln-navbar-links {
+    display: flex;
+  }
+}
+
+.ln-navbar-link-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+}
+
+.ln-navbar-link {
+  position: relative;
+  z-index: 1;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.ln-navbar-link:hover {
+  color: #ea580c;
+}
